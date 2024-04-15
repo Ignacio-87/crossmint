@@ -1,0 +1,18 @@
+{
+  "name": "crossmint-challenge",
+  "version": "1.0.0",
+  "repository": "https://github.com/Ignacio-87/crossmint-challenge.git",
+  "author": "Ignacio Pulice Donatto",
+  "license": "MIT",
+  "scripts": {
+    "challenge1": "ts-node src/challenge1.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "axios": "^1.6.8"
+  }
+}
