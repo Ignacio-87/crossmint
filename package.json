@@ -5,7 +5,10 @@
   "author": "Ignacio Pulice Donatto",
   "license": "MIT",
   "scripts": {
-    "challenge1": "ts-node src/challenge1.ts"
+    "populate-phase-1": "ts-node src/scripts/populatePhase1.ts",
+    "populate-phase-2": "ts-node src/scripts/populatePhase2.ts",
+    "delete-phase-1": "ts-node src/scripts/deletePhase1.ts",
+    "delete-phase-2": "ts-node src/scripts/deletePhase2.ts"
   },
   "devDependencies": {
     "@types/node": "^20.12.7",
