@@ -6,8 +6,11 @@ import { Point } from "./types/astral.type";
 import { Soloon } from "./types/soloon.type";
 import { Cometh } from "./types/cometh.type";
 import { MultiverseResponse } from "./types/api.type";
+import axiosRetry from "axios-retry";
 
 // <<<<<< ENDPOINTS >>>>>>
+
+axiosRetry(axios, { retries: 3 });
 
 export const updatePolyanetPoints = async (polyanets: Polyanet[]) => {
   for (let polyanet of polyanets) {
@@ -67,30 +70,63 @@ export const deleteComethPoints = async (comeths: Cometh[]) => {
 // <<<<<< ENDPOINTS >>>>>>
 
 const updatePolyanetPoint = async (polyanet: Polyanet) => {
-  await callAxiosPostEndpoint(Endpoints.POLYANETS, polyanet);
+  try {
+    await callAxiosPostEndpoint(Endpoints.POLYANETS, polyanet);
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 };
 
 const updateSoloonPoint = async (soloon: Soloon) => {
-  await callAxiosPostEndpoint(Endpoints.SOLOONS, soloon);
+  try {
+    await callAxiosPostEndpoint(Endpoints.SOLOONS, soloon);
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 };
 
 const updateComethPoint = async (cometh: Cometh) => {
-  await callAxiosPostEndpoint(Endpoints.COMETHS, cometh);
+  try {
+    await callAxiosPostEndpoint(Endpoints.COMETHS, cometh);
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 };
 
 const deletePolyanetsPoint = async (polyanet: Polyanet) => {
   const params = { ...polyanet, candidateId: CANDIDATE_ID };
-  return axios.delete(API + Endpoints.POLYANETS, { data: params });
+
+  try {
+    return axios.delete(API + Endpoints.POLYANETS, { data: params });
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 };
 
 const deleteSoloonPoint = async (soloon: Soloon) => {
   const params = { ...soloon, candidateId: CANDIDATE_ID };
-  return axios.delete(API + Endpoints.SOLOONS, { data: params });
+
+  try {
+    return axios.delete(API + Endpoints.SOLOONS, { data: params });
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 };
 
 const deleteComethPoint = async (cometh: Cometh) => {
   const params = { ...cometh, candidateId: CANDIDATE_ID };
-  return axios.delete(API + Endpoints.SOLOONS, { data: params });
+
+  try {
+    return axios.delete(API + Endpoints.COMETHS, { data: params });
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 };
 
 const callAxiosPostEndpoint = async (

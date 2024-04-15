@@ -5,5 +5,6 @@ export enum Endpoints {
   POLYANETS = "/polyanets",
   SOLOONS = "/soloons",
   COMETHS = "/comeths",
-  CHALLENGE = "/challenge",
 }
+
+export const DELAY_API = 1000;
